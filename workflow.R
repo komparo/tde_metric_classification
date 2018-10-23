@@ -5,13 +5,13 @@ library(tidyr)
 library(stringr)
 library(dplyr)
 
-metric_design <- tibble(
+metric_design_all <- tibble(
   average_accuracy = c(0, 0.5, 1)
 ) %>% 
   mutate(parameters = dynutils::mapdf(., parameters)) %>% 
   mutate(id = as.character(seq_len(n())))
 
-generate_metric_calls <- function(methods, workflow_folder = ".", scores_folder = "scores", metric_design = metric_design) {
+generate_metric_calls <- function(methods, workflow_folder = ".", scores_folder = "scores", metric_design = metric_design_all) {
   design <- crossing(
     methods$design %>% rename(method_id = id) %>% bind_cols(methods$outputs) %>% select(-parameters),
     metric_design

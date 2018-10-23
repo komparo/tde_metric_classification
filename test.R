@@ -10,7 +10,7 @@ source("modules/method/workflow.R")
 datasets <- generate_dataset_calls(
   workflow_folder = "modules/dataset",
   datasets_folder = "results/datasets",
-  dataset_design = dataset_design[1, ]
+  dataset_design = dataset_design_all[1, ]
 )
 
 # datasets$start_and_wait()
@@ -18,7 +18,7 @@ datasets <- generate_dataset_calls(
 methods <- generate_method_calls(
   datasets,
   workflow_folder = "modules/method",
-  method_design = method_design[1, ],
+  method_design = method_design_all[1, ],
   models_folder = "results/models"
 )
 
@@ -28,7 +28,7 @@ metrics <- generate_metric_calls(
   methods,
   workflow_folder = ".",
   scores_folder = "results/scores",
-  metric_design = metric_design[1, ]
+  metric_design = metric_design_all[1, ]
 )
 
 # metrics$start_and_wait()
