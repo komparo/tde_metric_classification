@@ -25,8 +25,18 @@ methods <- generate_method_calls(
 )
 
 source('workflow.R')
+metrics <- generate_metric_calls(
+  methods,
+  workflow_folder = ".",
+  scores_folder = "data/scores",
+  metric_design = metric_design_all[1, ]
+)
+
 workflow <- workflow(
   datasets,
-  methods
+  methods,
+  metrics
 )
+workflow$reset()
 workflow$run()
+
