@@ -12,7 +12,7 @@ expression <- read.csv(inputs[["expression"]], row.names = 1) %>% as.matrix()
 tde_overall <- readr::read_csv(inputs[["tde_overall"]])
 
 # score
-scores <- list(accuracy = parameters[["average_accuracy"]])
+accuracy = rnorm(1, parameters[["average_accuracy"]], sd = 0.1)
 
 # write dataset
-jsonlite::write_json(scores, outputs[["scores"]])
+jsonlite::write_json(accuracy, outputs[["accuracy"]])

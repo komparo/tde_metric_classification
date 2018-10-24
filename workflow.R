@@ -27,7 +27,7 @@ generate_metric_calls <- function(methods, workflow_folder = ".", scores_folder 
         executor = list(docker_executor("komparo/tde_method_random"))
       ),
     outputs = design %>% transmute(
-      scores = str_glue("{scores_folder}/{id}/{dataset_id}/{method_id}/scores.json") %>% purrr::map(derived_file)
+      accuracy = str_glue("{scores_folder}/{id}/{dataset_id}/{method_id}/accuracy.json") %>% purrr::map(derived_file)
     )
   )
 }
