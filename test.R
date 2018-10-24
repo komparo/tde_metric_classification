@@ -34,10 +34,8 @@ metrics <- generate_metric_calls(
 # metrics$start_and_wait()
 
 workflow <- workflow(
-  list(
-    datasets,
-    methods,
-    metrics
-  )
+  datasets,
+  methods,
+  metrics
 )
 workflow$run()
