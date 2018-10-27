@@ -23,7 +23,6 @@ get_call <- function(models) {
   )
   
   rscript_call(
-    "komparo/dummy",
     design = design,
     inputs = c("script", "executor", "expression", "tde_overall", "parameters"),
     outputs = c("accuracy")
