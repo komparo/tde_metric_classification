@@ -38,6 +38,6 @@ get_call <- function(models) {
       model_tde_overall = map(model, "tde_overall"),
       parameters
     ),
-    outputs = exprs(accuracy)
+    outputs = exprs(scores)
   )
 }
