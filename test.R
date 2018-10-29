@@ -15,7 +15,7 @@ models$design <- models$design[1, ]
 
 scores <- load_call(
   "workflow.R", 
-  derived_file_directory = "results/scores", 
+  derived_file_directory = "results/scores",
   models = models
 )
 scores$design <- scores$design[1, ]

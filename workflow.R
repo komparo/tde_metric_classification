@@ -9,11 +9,7 @@ models$design %>% dynutils::mapdf(identity)
 
 get_call <- function(models) {
   metric_design <- tibble(
-    average_accuracy = c(0, 0.5, 1)
-  ) %>% 
-    mutate(
-      parameters = dynutils::mapdf(., parameters),
-      id = as.character(seq_len(n()))
+      parameters = list(parameters(list(dummy = 0)))
     )
   
   design <- crossing(
@@ -22,7 +18,7 @@ get_call <- function(models) {
   ) %>% 
     mutate(
       dataset_id = map_chr(model, ~.$dataset$id),
-      method_id = map_chr(model, "id"),
+      method_id = map_chr(model, "method_id"),
       script = list(script_file(str_glue("scripts/run.R"))),
       executor = list(docker_executor("komparo/tde_method_random")),
       scores = str_glue("{id}/{dataset_id}/{method_id}/scores.json") %>% purrr::map(derived_file)
