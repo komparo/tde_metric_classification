@@ -32,4 +32,4 @@ scores <- full_join(
   as.list()
 
 # write dataset
-jsonlite::write_json(scores, outputs[["accuracy"]])
+jsonlite::write_json(scores, outputs[["scores"]])

@@ -25,7 +25,7 @@ get_call <- function(models) {
       method_id = map_chr(model, "id"),
       script = list(script_file(str_glue("scripts/run.R"))),
       executor = list(docker_executor("komparo/tde_method_random")),
-      accuracy = str_glue("{id}/{dataset_id}/{method_id}/accuracy.json") %>% purrr::map(derived_file)
+      scores = str_glue("{id}/{dataset_id}/{method_id}/scores.json") %>% purrr::map(derived_file)
   )
   
   rscript_call(
