@@ -14,17 +14,17 @@ model_tde_overall <- readr::read_csv(inputs[["model_tde_overall"]])
 
 # calculate accuracy
 scores <- full_join(
-  dataset_tde_overall %>% rename(tde_overall_1 = tde_overall),
-  model_tde_overall %>% rename(tde_overall_2 = tde_overall)
+  dataset_tde_overall %>% rename(significant_1 = significant),
+  model_tde_overall %>% rename(significant_2 = significant)
 ) %>% 
   summarise(
     n = n(),
-    TP = sum((tde_overall_1 == tde_overall_2) & tde_overall_1),
-    TN = sum((tde_overall_1 == tde_overall_2) & !tde_overall_1),
-    FP = sum((tde_overall_1 == !tde_overall_2) & !tde_overall_1),
-    FN = sum((tde_overall_1 == !tde_overall_2) & tde_overall_1),
-    P = sum(tde_overall_1),
-    N = sum(!tde_overall_1),
+    TP = sum((significant_1 == significant_2) & significant_1),
+    TN = sum((significant_1 == significant_2) & !significant_1),
+    FP = sum((significant_1 == !significant_2) & !significant_1),
+    FN = sum((significant_1 == !significant_2) & significant_1),
+    P = sum(significant_1),
+    N = sum(!significant_1),
     accuracy = (TP + TN) / n,
     balanced_accuracy = (TP / P + TN / N) /2,
     F1 = 2 * TP / (2 * TP + FP + FN)
