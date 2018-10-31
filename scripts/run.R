@@ -6,7 +6,7 @@ parameters <- jsonlite::fromJSON(inputs[["parameters"]])
 set.seed(parameters$seed)
 
 # read expression
-expression <- read.csv(inputs[["dataset_expression"]], row.names = 1) %>% as.matrix()
+gene_expression <- read.csv(inputs[["gene_expression"]], row.names = 1) %>% as.matrix()
 
 # read tde overall
 dataset_tde_overall <- readr::read_csv(inputs[["dataset_tde_overall"]])

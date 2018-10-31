@@ -1,4 +1,5 @@
 library(certigo)
+library(tde)
 
 # installed together with certigo
 library(tidyr)
@@ -29,7 +30,7 @@ get_call <- function(models) {
     inputs = exprs(
       script, 
       executor, 
-      dataset_expression = map(model, ~.$dataset$expression),
+      gene_expression = map(model, ~.$dataset$gene_expression),
       dataset_tde_overall = map(model, ~.$dataset$tde_overall),
       model_tde_overall = map(model, "tde_overall"),
       parameters
