@@ -19,10 +19,10 @@ scores <- full_join(
 ) %>% 
   summarise(
     n = n(),
-    TP = sum((significant_1 == significant_2) & significant_1),
-    TN = sum((significant_1 == significant_2) & !significant_1),
-    FP = sum((significant_1 == !significant_2) & !significant_1),
-    FN = sum((significant_1 == !significant_2) & significant_1),
+    TP = sum(significant_1 & significant_2),
+    TN = sum(!significant_1 & !significant_2),
+    FP = sum(!significant_1 & significant_2),
+    FN = sum(significant_1 & !significant_2),
     P = sum(significant_1),
     N = sum(!significant_1),
     accuracy = (TP + TN) / n,
